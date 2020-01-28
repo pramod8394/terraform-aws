@@ -1,0 +1,18 @@
+- hosts: localhost
+  connection: local
+  become: false
+  gather_facts: false
+  vars:
+    terraform_apply: false
+    terraform_destroy: false
+    terraform_dir: ../terraform
+- name: Generating Terraform VM Definitions
+      template:
+        src: templates/terraform_vm_resources.tf.j2
+        dest: "{{ terraform_dir }}/ec2.tf"
+      tags:
+        - terraform_apply
+        - terraform_destroy
+        - terraform_init
+        - terraform_inventory
+        - terraform_plan
