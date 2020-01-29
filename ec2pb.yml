@@ -1,0 +1,20 @@
+---
+- hosts: server
+  tasks:
+    - name: Provision EC2 instance
+      ec2:
+         key_name: AWS-Ansible
+         region: ap-southeast-1
+         instance_type: t2.micro
+         image: ami-67a6e604
+         wait: yes
+         wait_timeout: 500
+         count: 1
+         instance_tags:
+            Name: AWS-Ansible
+         volumes:
+            - device_name: /dev/xvda
+              volume_type: gp2
+              volume_size: 8
+         monitoring: yes
+      register: ec2
