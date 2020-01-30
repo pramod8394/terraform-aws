@@ -1,14 +1,13 @@
 ---
-- hosts: server
+- hosts: localhost
   tasks:
     - name: Provision EC2 instance
       ec2:
-         key_name: AWS-Ansible
-         region: ap-southeast-1
+         region: us-east-1
          instance_type: t2.micro
-         image: ami-67a6e604
+         image: ami-062f7200baf2fa504
          wait: yes
-         wait_timeout: 500
+         wait_timeout: 50
          count: 1
          instance_tags:
             Name: AWS-Ansible
