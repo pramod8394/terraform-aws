@@ -23,8 +23,6 @@
          cidr_block: 10.10.0.0/24
          region: us-east-1
          state: present
-         aws_access_key: "{{ aws_access_key }}"
-         aws_secret_key: "{{ aws_secret_key }}"
       register: vpc
     - name: associate subnet to the VPC
       ec2_vpc_subnet:
@@ -32,8 +30,6 @@
          vpc_id: Ansible VPC
          region: us-east-1
          cidr: 10.10.0.0/26
-         aws_access_key: "{{ aws_access_key }}"
-         aws_secret_key: "{{ aws_secret_key }}"
          map_public: yes
          resource_tags:
             Name: Ansible Subnet
